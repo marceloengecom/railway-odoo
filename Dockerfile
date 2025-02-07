@@ -6,10 +6,15 @@
 # Usa a imagem oficial do Odoo 18
 FROM odoo:18.0
 
-# Define as variáveis de ambiente (Railway usa env vars)
-ENV HOST=${HOST}
-ENV USER=${USER}
-ENV PASSWORD=${PASSWORD}
+# Instala dependências adicionais (opcional)
+RUN apt-get update && apt-get install -y \
+    postgresql-client
+
+# Define as variáveis de ambiente do banco de dados
+ENV HOST=postgres
+ENV USER=odoo
+ENV PASSWORD=My-503501
+ENV POSTGRES_DB=Empresa_Odoo2025
 
 # Cria diretórios necessários
 RUN mkdir -p /mnt/extra-addons
@@ -19,3 +24,4 @@ EXPOSE 8069
 
 # Comando de inicialização
 CMD ["odoo"]
+
