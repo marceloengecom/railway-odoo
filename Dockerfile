@@ -10,12 +10,6 @@ FROM odoo:18.0
 RUN apt-get update && apt-get install -y \
     postgresql-client
 
-# Define as variáveis de ambiente do banco de dados
-ENV HOST=postgres
-ENV USER=odoo
-ENV PASSWORD=My-503501
-ENV POSTGRES_DB=Empresa_Odoo2025
-
 # Cria diretórios necessários
 RUN mkdir -p /mnt/extra-addons
 
